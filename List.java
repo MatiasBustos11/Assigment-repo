@@ -8,7 +8,7 @@ public class MergeSortSimple {
         // Step 3: Sort the list using merge sort
         words = mergeSort(words);
 
-        // Step 4: Print the sorted list
+      // Step 4: Print the sorted list
         System.out.println("Sorted List:");
         System.out.println(words);
     }
