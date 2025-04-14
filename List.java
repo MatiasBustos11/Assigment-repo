@@ -33,3 +33,21 @@ public class MergeSortSimple {
         // Step 4: Merge the two sorted halves
         return merge(left, right);
     }
+    // This method will merge two sorted lists into one sorted list
+    public static ArrayList<String> merge(ArrayList<String> left, ArrayList<String> right) {
+        ArrayList<String> result = new ArrayList<>();
+
+        int i = 0; // Index for left list
+        int j = 0; // Index for right list
+
+        // Compare elements from left and right lists and add the smaller one
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i).compareTo(right.get(j)) < 0) {
+                result.add(left.get(i)); // left element is smaller
+                i++; // move to the next element in left
+            } else {
+                result.add(right.get(j)); // right element is smaller
+                j++; // move to the next element in right
+            }
+        }
+
