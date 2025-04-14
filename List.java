@@ -50,4 +50,20 @@ public class MergeSortSimple {
                 j++; // move to the next element in right
             }
         }
+        
+        // Add the remaining elements from left list if any
+        while (i < left.size()) {
+            result.add(left.get(i));
+            i++;
+        }
+
+        // Add the remaining elements from right list if any
+        while (j < right.size()) {
+            result.add(right.get(j));
+            j++;
+        }
+
+        return result; // Return the merged sorted list
+    }
+}
 
