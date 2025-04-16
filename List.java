@@ -3,44 +3,40 @@ import java.util.ArrayList;
 public class MergeSortSimple {
 
     public static void main(String[] args) {
-        // Step 1: Create an empty list of words
-        ArrayList<String> words = new ArrayList<>();
-        // Step 3: Sort the list using merge sort
-        words = mergeSort(words);
+        ArrayList<String> words = new ArrayList<>(); //We create an empty list
+        words = mergeSort(words); //We organise the list by using merge sort
 
-      // Step 4: Print the sorted list
+      // Print the sorted list
         System.out.println("Sorted List:");
         System.out.println(words);
     }
-     // This method will perform merge sort on the list
+     // This  will perform merge sort on the list
     public static ArrayList<String> mergeSort(ArrayList<String> list) {
-        // Base case: If the list has 0 or 1 item, it is already sorted
-        if (list.size() <= 1) {
+        if (list.size() <= 1) { //If the list has 0 or 1 items, the list is sorted
             return list;
         }
 
-        // Step 1: Find the middle point
-        int middle = list.size() / 2;
+        int middle = list.size() / 2;  //We first find the middle point of the list
 
-        // Step 2: Divide the list into two halves
+        // Having the middle point, then, we separate the list into two halves
         ArrayList<String> left = new ArrayList<>(list.subList(0, middle));
         ArrayList<String> right = new ArrayList<>(list.subList(middle, list.size()));
 
-        // Step 3: Sort each half (recursively)
+        // We organise each half
         left = mergeSort(left);
         right = mergeSort(right);
 
-        // Step 4: Merge the two sorted halves
+        // Finally we merge both halves together
         return merge(left, right);
     }
-    // This method will merge two sorted lists into one sorted list
+    // // Here we will put together the two sorted lists into one sorted list
     public static ArrayList<String> merge(ArrayList<String> left, ArrayList<String> right) {
         ArrayList<String> result = new ArrayList<>();
 
         int i = 0; // Index for left list
         int j = 0; // Index for right list
 
-        // Compare elements from left and right lists and add the smaller one
+        // Now we compare items from left and right and add the smaller one
         while (i < left.size() && j < right.size()) {
             if (left.get(i).compareTo(right.get(j)) < 0) {
                 result.add(left.get(i)); // left element is smaller
@@ -50,4 +46,19 @@ public class MergeSortSimple {
                 j++; // move to the next element in right
             }
         }
+        
+        // Add the remaining elements from left list if any left
+        while (i < left.size()) {
+            result.add(left.get(i));
+            i++;
+        }
 
+        // Add the remaining elements from right list if any left
+        while (j < right.size()) {
+            result.add(right.get(j));
+            j++;
+        }
+
+        return result; // Return the merged sorted list
+    }
+}
